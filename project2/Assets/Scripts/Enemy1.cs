@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour {
 
-    private float left, right, left2, right2;
+    private float left, right, left2, right2,right3, left3;
     private float speed;
     public GameObject bomb;
 
@@ -16,8 +16,10 @@ public class Enemy1 : MonoBehaviour {
 
         right2 = 56.98f;
         left2 = 42.6f;
+        right3 = 117.9f;
+        left3 = 108.0f;
 
-        if(gameObject.name == "Ghost1")
+        if (gameObject.name == "Ghost1")
         {
             StartCoroutine("ThrowBomb");
         }
@@ -31,6 +33,10 @@ public class Enemy1 : MonoBehaviour {
         if(gameObject.name == "Ghost")
         {
             Movement1();
+        }
+        else if (gameObject.name == "Ghost3" || gameObject.name == "Ghost4")
+        {
+            Movement3();
         }
         else
         {
@@ -76,6 +82,22 @@ public class Enemy1 : MonoBehaviour {
             transform.Rotate(0, 180, 0);
         }
         
+    }
+
+    private void Movement3()
+    {
+        if (transform.position.x < left3)
+        {
+            transform.Rotate(0, 180, 0);
+            GameObject bombclone = (GameObject)Instantiate(bomb, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            bombclone.SendMessage("ChangeDirection", "right");
+        }
+        else if (transform.position.x > right3)
+        {
+            transform.Rotate(0, 180, 0);
+            GameObject bombclone = (GameObject)Instantiate(bomb, transform.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+            bombclone.SendMessage("ChangeDirection", "left");
+        }
     }
 
     IEnumerator ThrowBomb()

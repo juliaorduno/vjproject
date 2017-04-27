@@ -18,7 +18,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         minDistance = 10f;
-        minShootDistance = 2f;
+        minShootDistance = 5f;
         target = player.transform.position;
         pastDistance = transform.position.x - target.x;
         animator = GetComponent<Animator>();
@@ -49,6 +49,12 @@ public class Boss : MonoBehaviour
                 transform.Translate(0, speed * Time.deltaTime, 0);
                 animator.SetBool("Moving", false);
             }
+        }
+
+        if(life <= 0)
+        {
+            move = false;
+            animator.SetTrigger("Dead");
         }
 
     }
@@ -115,5 +121,10 @@ public class Boss : MonoBehaviour
     public static void Move()
     {
         move = true;
+    }
+
+    public void DestroyBoss()
+    {
+        Destroy(gameObject);
     }
 }

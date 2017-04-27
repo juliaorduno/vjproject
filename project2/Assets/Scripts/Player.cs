@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,7 +18,6 @@ public class Player : MonoBehaviour
     public int lightning, life;
     private static bool switchOn;
 
-
     // Use this for initialization
     void Start()
     {
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         grounded = false;
         facingRight = true;
-        speed = 5f;
+        speed = 7f;
         jumpSpeed = 7f;
         climb = false;
         powerClimb = false;
@@ -35,7 +36,6 @@ public class Player : MonoBehaviour
         life = 100;
         instSkeleton = true;
         moving = false;
-
         StartCoroutine("InstantiateSkeleton");
 
     }
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     {
         Movement();
         Throw();
+        Dead();
+        BarraVida.Damage(life);
 
         if (detectSwitchKey)
         {
@@ -166,6 +168,7 @@ public class Player : MonoBehaviour
                     Instantiate(doorOpen, new Vector2(c.transform.position.x, c.transform.position.y), transform.rotation);
                     Destroy(c.gameObject);
                     print("Level Ended");
+                    SceneManager.LoadScene("Scene2");
                 }
                 else
                 {
@@ -186,11 +189,13 @@ public class Player : MonoBehaviour
             Destroy(c.gameObject);
             life -= 5;
             print("Life: " + life);
+            AttackReaction(1);
         }
         else if (c.gameObject.tag == "Enemy")
         {
-            life -= 10;
+            life -= 5;
             print("Life: " + life);
+            AttackReaction(1);
         }
         
         else if (c.gameObject.tag == "rayo")
@@ -276,9 +281,26 @@ public class Player : MonoBehaviour
         {
             Instantiate(skeleton, new Vector2(44.21721f, 10.42f), transform.rotation);
             yield return new WaitForSeconds(5f);
-        }
-
-        
+        }   
     }
 
+    private void Dead()
+    {
+        if (life <= 0)
+        {
+            animator.SetTrigger("Dead");
+        }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Scene1");
+    }
+
+    public void AttackReaction(int x)
+    {
+        if (facingRight)
+            x *= -1;
+        rb.AddRelativeForce(new Vector2(x, 5), ForceMode2D.Impulse);
+    }
 }

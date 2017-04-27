@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player2 : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class Player2 : MonoBehaviour
     public float speed;
     public float jumpSpeed;
     public Rigidbody2D rb;
-    private bool climb, gliding, grow;
+    private bool climb, gliding, grow, powerAttack, powerGlide, instSkeleton;
     private static bool grounded;
     private bool facingRight;
-    public GameObject kunai;
+    public GameObject kunai, saw;
     public int lightning, life;
     private static bool attacking, moving;
+    public Spike[] spikes;
+    private int spikeNo;
+    public GameObject skeleton;
 
 
     // Use this for initialization
@@ -25,15 +29,21 @@ public class Player2 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         grounded = false;
         facingRight = true;
-        speed = 5f;
+        speed = 7f;
         jumpSpeed = 7f;
         climb = false;
         lightning = 0;
-        life = 10;
+        life = 100;
         moving = false;
         attacking = false;
         gliding = false;
         grow = false;
+        powerAttack = false;
+        powerGlide = false;
+        StartCoroutine("InstantiateSaw");
+        spikeNo = 0;
+
+        StartCoroutine("InstantiateSkeleton");
     }
 
     // Update is called once per frame
@@ -102,7 +112,7 @@ public class Player2 : MonoBehaviour
             animator.SetBool("Slide", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && powerAttack)
         {
             animator.SetTrigger("Attack");
             attacking = true;
@@ -120,6 +130,12 @@ public class Player2 : MonoBehaviour
             grounded = true;
             animator.SetBool("Grounded", grounded);
         }
+        else if (c.gameObject.name == "Boss" && !attacking)
+        {
+             AttackReaction(5);
+             life -= 10;
+             print("Life: " + life);
+        }
     }
 
     void OnCollisionExit2D(Collision2D c)
@@ -134,8 +150,8 @@ public class Player2 : MonoBehaviour
         {
             attacking = false;
         }
+        
     }
-
 
     void OnTriggerStay2D(Collider2D c)
     {
@@ -157,8 +173,9 @@ public class Player2 : MonoBehaviour
         }
         else if (c.gameObject.tag == "Enemy")
         {
-            life -= 10;
+            life -= 5;
             print("Life: " + life);
+            AttackReaction(3);
         }
         
         else if (c.gameObject.tag == "rayo")
@@ -181,22 +198,24 @@ public class Player2 : MonoBehaviour
             life -= 10;
             Destroy(c.gameObject);
             print("Life: " + life);
-        }
-        else if(c.gameObject.name == "Boss")
-        {
-            life -= 20;
-            Destroy(c.gameObject);
-            print("Life: " + life);
+            AttackReaction(3);
         }
         else if (c.gameObject.name == "GlideTrigger1")
         {
-            gliding = false;
-            animator.SetBool("Glide", gliding);
-            animator.SetBool("Moving", false);
-            animator.SetBool("Grounded", true);
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            if (powerGlide)
+            {
+                gliding = false;
+                animator.SetBool("Glide", gliding);
+                animator.SetBool("Moving", false);
+                animator.SetBool("Grounded", true);
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+                Destroy(c.gameObject);
+            }
+            else
+            {
+                life = 0;
+            }
             
-            Destroy(c.gameObject);
         }
         else if(c.gameObject.name == "BossTrigger")
         {
@@ -208,6 +227,20 @@ public class Player2 : MonoBehaviour
             Destroy(c.gameObject);
             grow = true;
         }
+        else if (c.gameObject.name == "Item2")
+        {
+            Destroy(c.gameObject);
+            powerAttack = true;
+        }
+        else if(c.gameObject.name == "Item3")
+        {
+            Destroy(c.gameObject);
+            powerGlide = true;
+        }
+        else if(c.gameObject.tag == "Acid")
+        {
+            Dead();
+        }
     }
 
     void OnTriggerExit2D(Collider2D c)
@@ -217,12 +250,17 @@ public class Player2 : MonoBehaviour
             climb = false;
             animator.SetBool("OnFence", climb);
         }
-        else if(c.gameObject.name == "GlideTrigger")
+        else if(c.gameObject.name == "GlideTrigger" && powerGlide)
         {
             Glide();
             Destroy(c.gameObject);
-        }  
-         
+        }
+        else if (c.gameObject.tag == "SpikeTrigger")
+        {
+            Destroy(c.gameObject);
+            spikes[spikeNo].fall = true;
+            spikeNo++;
+        }
     }
 
     private void Throw() {
@@ -288,4 +326,30 @@ public class Player2 : MonoBehaviour
         get { return moving; }
     }
 
+    public void AttackReaction(int x)
+    {
+        if (facingRight)
+            x *= -1;
+        rb.AddRelativeForce(new Vector2(x, 5), ForceMode2D.Impulse);
+    }
+
+    IEnumerator InstantiateSaw()
+    {
+        while (true)
+        {
+            Instantiate(saw, new Vector2(36.79f, -9.58f), transform.rotation);
+            yield return new WaitForSeconds(2f);
+        }
+    }
+
+    IEnumerator InstantiateSkeleton()
+    {
+        while (instSkeleton)
+        {
+            Instantiate(skeleton, new Vector2(100.07f, 10.99f), transform.rotation);
+            yield return new WaitForSeconds(15f);
+        }
+
+
+    }
 }
