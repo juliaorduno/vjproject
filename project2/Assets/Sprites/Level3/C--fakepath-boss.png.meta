@@ -1,0 +1,496 @@
+fileFormatVersion: 2
+guid: d92bc34282591814b82af6b7ff512660
+timeCreated: 1494297553
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: C--fakepath-boss_0
+    21300002: C--fakepath-boss_1
+    21300004: C--fakepath-boss_2
+    21300006: C--fakepath-boss_3
+    21300008: C--fakepath-boss_4
+    21300010: C--fakepath-boss_5
+    21300012: C--fakepath-boss_6
+    21300014: C--fakepath-boss_7
+    21300016: C--fakepath-boss_8
+    21300018: C--fakepath-boss_9
+    21300020: C--fakepath-boss_10
+    21300022: C--fakepath-boss_11
+    21300024: C--fakepath-boss_12
+    21300026: C--fakepath-boss_13
+    21300028: C--fakepath-boss_14
+    21300030: C--fakepath-boss_15
+    21300032: C--fakepath-boss_16
+    21300034: C--fakepath-boss_17
+    21300036: C--fakepath-boss_18
+    21300038: C--fakepath-boss_19
+    21300040: C--fakepath-boss_21
+    21300042: C--fakepath-boss_22
+    21300044: C--fakepath-boss_23
+    21300046: C--fakepath-boss_24
+    21300048: C--fakepath-boss_25
+    21300050: C--fakepath-boss_26
+    21300052: C--fakepath-boss_27
+    21300054: C--fakepath-boss_28
+    21300056: C--fakepath-boss_29
+    21300058: C--fakepath-boss_30
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: C--fakepath-boss_0
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 467
+        width: 59
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_1
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 467
+        width: 60
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_2
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 467
+        width: 63
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_3
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 468
+        width: 68
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_4
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 468
+        width: 72
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_5
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 360
+        width: 88
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_6
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 359
+        width: 87
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_7
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 357
+        width: 69
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_8
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 356
+        width: 70
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_9
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 355
+        width: 75
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_10
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 364
+        width: 77
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_11
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 249
+        width: 51
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_12
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 246
+        width: 126
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_13
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 285
+        width: 56
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 257
+        width: 52
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_15
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 253
+        width: 72
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_16
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 199
+        width: 96
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 198
+        width: 95
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_18
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 196
+        width: 96
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_19
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 200
+        width: 135
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 98
+        width: 114
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_22
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 101
+        width: 108
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_23
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 114
+        width: 69
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_24
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 106
+        width: 57
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_25
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 83
+        width: 88
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_26
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 82
+        width: 87
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_27
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 80
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_28
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1
+        width: 81
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_29
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 2
+        width: 80
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: C--fakepath-boss_30
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 4
+        width: 80
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

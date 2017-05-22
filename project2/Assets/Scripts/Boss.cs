@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -126,5 +127,6 @@ public class Boss : MonoBehaviour
     public void DestroyBoss()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene("Scene3");
     }
 }

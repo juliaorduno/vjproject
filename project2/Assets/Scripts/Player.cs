@@ -17,11 +17,15 @@ public class Player : MonoBehaviour
     public GameObject kunai, skeleton, doorOpen;
     public int lightning, life;
     private static bool switchOn;
+    public Camera cam;
+    private BarraVida vida;
+    public AudioClip[] soundfx; // Jump=0, Rayo=1, Item=2, Knife=3, Switch=4, Pain=5, Locked=6, Win=7,Spring=8
 
     // Use this for initialization
     void Start()
     {
         animator = GetComponent<Animator>();
+        vida = cam.GetComponent<BarraVida>();
         rb = GetComponent<Rigidbody2D>();
         grounded = false;
         facingRight = true;
@@ -46,8 +50,7 @@ public class Player : MonoBehaviour
         Movement();
         Throw();
         Dead();
-        BarraVida.Damage(life);
-
+        vida.setHealth(life);
         if (detectSwitchKey)
         {
             if (Input.GetKeyDown(KeyCode.Return))
@@ -94,6 +97,8 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown("up") && grounded)
             {
+                GetComponent<AudioSource>().clip = soundfx[0];
+                GetComponent<AudioSource>().Play();
                 rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                 grounded = false;
                 animator.SetBool("Grounded", grounded);
@@ -138,6 +143,8 @@ public class Player : MonoBehaviour
         }
         else if(c.gameObject.name == "Spring")
         {
+            GetComponent<AudioSource>().clip = soundfx[8];
+            GetComponent<AudioSource>().Play();
             rb.AddForce(new Vector2(0, jumpSpeed*2.5f), ForceMode2D.Impulse);
             grounded = false;
             animator.SetBool("Grounded", grounded);
@@ -163,8 +170,12 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
+                GetComponent<AudioSource>().clip = soundfx[6];
+                GetComponent<AudioSource>().Play();
                 if (lightning == 3)
                 {
+                    GetComponent<AudioSource>().clip = soundfx[7];
+                    GetComponent<AudioSource>().Play();
                     Instantiate(doorOpen, new Vector2(c.transform.position.x, c.transform.position.y), transform.rotation);
                     Destroy(c.gameObject);
                     print("Level Ended");
@@ -186,6 +197,8 @@ public class Player : MonoBehaviour
         }
         else if (c.gameObject.tag == "Bomb")
         {
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             life -= 5;
             print("Life: " + life);
@@ -193,6 +206,8 @@ public class Player : MonoBehaviour
         }
         else if (c.gameObject.tag == "Enemy")
         {
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
             life -= 5;
             print("Life: " + life);
             AttackReaction(1);
@@ -200,11 +215,15 @@ public class Player : MonoBehaviour
         
         else if (c.gameObject.tag == "rayo")
         {
+            GetComponent<AudioSource>().clip = soundfx[1];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             lightning++;
         }
         else if (c.gameObject.name == "Item1")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             powerClimb = true;
             print("Power Up: You can climb now!");
@@ -212,12 +231,16 @@ public class Player : MonoBehaviour
 
         else if(c.gameObject.name == "Item2")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             powerSlide = true;
             print("Power Up: You can slide now!");
         }
         else if (c.gameObject.name == "Botiquin")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             life += 20;
             Destroy(c.gameObject);
             print("Life: " + life);
@@ -250,6 +273,8 @@ public class Player : MonoBehaviour
         {
             if (GameObject.FindWithTag("Kunai") == null)
             {
+                GetComponent<AudioSource>().clip = soundfx[3];
+                GetComponent<AudioSource>().Play();
                 animator.SetTrigger("Throw");
                 if (facingRight)
                 {

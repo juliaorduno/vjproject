@@ -15,18 +15,21 @@ public class Player2 : MonoBehaviour
     private static bool grounded;
     private bool facingRight;
     public GameObject kunai, saw;
-    public int lightning, life;
+    public int lightning, life, num;
     private static bool attacking, moving;
     public Spike[] spikes;
     private int spikeNo;
-    public GameObject skeleton;
-
+    public GameObject skeleton, blood, head, head2;
+    public Camera cam;
+    private BarraVida vida;
+    public AudioClip[] soundfx; // Jump=0, Rayo=1, Item=2, Knife=3, Switch=4, Growing=5
 
     // Use this for initialization
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        vida = cam.GetComponent<BarraVida>();
         grounded = false;
         facingRight = true;
         speed = 7f;
@@ -42,8 +45,9 @@ public class Player2 : MonoBehaviour
         powerGlide = false;
         StartCoroutine("InstantiateSaw");
         spikeNo = 0;
-
+        instSkeleton = false;
         StartCoroutine("InstantiateSkeleton");
+        num = 0;
     }
 
     // Update is called once per frame
@@ -53,6 +57,7 @@ public class Player2 : MonoBehaviour
         Throw();
         Dead();
         Grow();
+        vida.setHealth(life);
     }
 
     public void Restart()
@@ -97,6 +102,8 @@ public class Player2 : MonoBehaviour
         {
             if (Input.GetKeyDown("up") && grounded)
             {
+                GetComponent<AudioSource>().clip = soundfx[0];
+                GetComponent<AudioSource>().Play();
                 rb.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
                 grounded = false;
                 animator.SetBool("Grounded", grounded);
@@ -114,6 +121,8 @@ public class Player2 : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A) && powerAttack)
         {
+            GetComponent<AudioSource>().clip = soundfx[6];
+            GetComponent<AudioSource>().Play();
             animator.SetTrigger("Attack");
             attacking = true;
         }
@@ -132,9 +141,31 @@ public class Player2 : MonoBehaviour
         }
         else if (c.gameObject.name == "Boss" && !attacking)
         {
-             AttackReaction(5);
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
+            AttackReaction(5);
              life -= 10;
              print("Life: " + life);
+        }
+
+        if (c.gameObject.name == "Feo" && !attacking)
+        {
+            bool isJumping = c.gameObject.GetComponent<Enemy3L3>().Jumping;
+
+            if (isJumping)
+            {
+                num++;
+                if (num == 1)
+                {
+                    GetComponent<AudioSource>().clip = soundfx[4];
+                    GetComponent<AudioSource>().Play();
+                    animator.SetTrigger("Dead2");
+                    Instantiate(blood, head.transform.position, head.transform.rotation);
+                    Instantiate(head2, new Vector2(head.transform.position.x - 1, head.transform.position.y + 1), head.transform.rotation);
+                    vida.setHealth(0);
+                }
+
+            }
         }
     }
 
@@ -173,6 +204,8 @@ public class Player2 : MonoBehaviour
         }
         else if (c.gameObject.tag == "Enemy")
         {
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
             life -= 5;
             print("Life: " + life);
             AttackReaction(3);
@@ -180,11 +213,15 @@ public class Player2 : MonoBehaviour
         
         else if (c.gameObject.tag == "rayo")
         {
+            GetComponent<AudioSource>().clip = soundfx[1];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             lightning++;
         }
         else if (c.gameObject.name == "Botiquin")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             life += 20;
             if(life > 100)
             {
@@ -195,6 +232,8 @@ public class Player2 : MonoBehaviour
         }
         else if(c.gameObject.tag == "Bullet")
         {
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
             life -= 10;
             Destroy(c.gameObject);
             print("Life: " + life);
@@ -224,22 +263,38 @@ public class Player2 : MonoBehaviour
         }
         else if(c.gameObject.name == "Item1")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             grow = true;
         }
         else if (c.gameObject.name == "Item2")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             powerAttack = true;
         }
         else if(c.gameObject.name == "Item3")
         {
+            GetComponent<AudioSource>().clip = soundfx[2];
+            GetComponent<AudioSource>().Play();
             Destroy(c.gameObject);
             powerGlide = true;
         }
         else if(c.gameObject.tag == "Acid")
         {
-            Dead();
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
+            life = 0;
+ 
+        }
+        else if (c.gameObject.tag == "Spike")
+        {
+            GetComponent<AudioSource>().clip = soundfx[4];
+            GetComponent<AudioSource>().Play();
+            life = 0;
+
         }
     }
 
@@ -268,6 +323,8 @@ public class Player2 : MonoBehaviour
         {
             if (GameObject.FindWithTag("Kunai") == null)
             {
+                GetComponent<AudioSource>().clip = soundfx[3];
+                GetComponent<AudioSource>().Play();
                 animator.SetTrigger("Throw");
                 if (facingRight)
                 {
@@ -303,6 +360,8 @@ public class Player2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return) && grow)
         {
+            GetComponent<AudioSource>().clip = soundfx[5];
+            GetComponent<AudioSource>().Play();
             transform.localScale = new Vector2(1f, 1f);
             kunai.transform.localScale = new Vector2(1f, 1f);
             Kunai.speed *= 2;
